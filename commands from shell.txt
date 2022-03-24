@@ -1,0 +1,408 @@
+Microsoft Windows [Version 10.0.19042.1586]
+(c) Microsoft Corporation. All rights reserved.
+C:\Users\Slavik\Desktop\Python\project_news_4>py -m venv venv
+C:\Users\Slavik\Desktop\Python\project_news_4>venv\scripts\activate
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4>pip install django
+Collecting django
+  Using cached Django-4.0.3-py3-none-any.whl (8.0 MB)
+Collecting tzdata
+  Using cached tzdata-2022.1-py2.py3-none-any.whl (339 kB)
+Collecting asgiref<4,>=3.4.1
+  Using cached asgiref-3.5.0-py3-none-any.whl (22 kB)
+Collecting sqlparse>=0.2.2
+  Using cached sqlparse-0.4.2-py3-none-any.whl (42 kB)
+Installing collected packages: tzdata, sqlparse, asgiref, django
+Successfully installed asgiref-3.5.0 django-4.0.3 sqlparse-0.4.2 tzdata-2022.1
+WARNING: You are using pip version 21.2.4; however, version 22.0.4 is available.
+You should consider upgrading via the 'C:\Users\Slavik\Desktop\Python\project_news_4\venv\Scripts\python.exe -m pip install --upgrade pip' command.
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4>python -m django startproject project
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4>py manage.py startapp newapp
+C:\Users\Slavik\AppData\Local\Programs\Python\Python39\python.exe: can't open file 'C:\Users\Slavik\Desktop\Python\project_news_4\manage.py': [Errno 2] No such file or directory
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4>cd project
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4\project>py manage.py startapp newapp
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4\project>py manage.py makemigrations
+No changes detected
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4\project>py manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4\project>py manage.py shell
+Python 3.9.9 (tags/v3.9.9:ccb0e6a, Nov 15 2021, 18:08:50) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from newapp.models.py import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 6, in <module>
+    class Author(models.Model):
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\venv\lib\site-packages\django\db\models\base.py", line 132, in __new__
+    raise RuntimeError(
+RuntimeError: Model class newapp.models.Author doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+>>> from newapp.models.py import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 6, in <module>
+    class Author(models.Model):
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\venv\lib\site-packages\django\db\models\base.py", line 132, in __new__
+    raise RuntimeError(
+RuntimeError: Model class newapp.models.Author doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+>>> ^Z
+
+now exiting InteractiveConsole...
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4\project>py manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  No migrations to apply.
+  Your models in app(s): 'newapp' have changes that are not yet reflected in a migration, and so won't be applied.
+  Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4\project>py manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  No migrations to apply.
+  Your models in app(s): 'newapp' have changes that are not yet reflected in a migration, and so won't be applied.
+  Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4\project>py manage.py makemigrations
+Migrations for 'newapp':
+  newapp\migrations\0001_initial.py
+    - Create model Author
+    - Create model Category
+    - Create model Post
+    - Create model PostCategory
+    - Add field postCategory to post
+    - Create model Comment
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4\project>py manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, newapp, sessions
+Running migrations:
+  Applying newapp.0001_initial... OK
+
+(venv) C:\Users\Slavik\Desktop\Python\project_news_4\project>py manage.py shell
+Python 3.9.9 (tags/v3.9.9:ccb0e6a, Nov 15 2021, 18:08:50) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from newapp.models.py import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'newapp.models.py'; 'newapp.models' is not a package
+>>> from newapp.models import *
+>>> u1 = User.objects.create_user(username='Artur')
+>>> u1
+<User: Artur>
+>>> u2 = User.objects.create_user(username='Ewa')
+>>> u2
+<User: Ewa>
+>>> u1
+<User: Artur>
+>>> Author.objects.create(authorUser=u1)
+<Author: Author object (1)>
+>>> Author.objects.create(authorUser=u2)
+<Author: Author object (2)>
+>>> Category.objects.create(name='Культура')
+<Category: Category object (1)>
+>>> Category.objects.create(name='Образование')
+<Category: Category object (2)>
+>>> Category.objects.create(name='Спорт')
+<Category: Category object (3)>
+>>> Category.objects.create(name='Политика')
+<Category: Category object (4)>
+>>> author1 = Author.objects.get(id=1)
+>>> author1
+<Author: Author object (1)>
+>>> Post.objects.create(author=author1, categoryType='AR', title='Институт Адама Мицкевича', text='Институт Адама Мицкевича (ИАМ) занимается пр
+одвижением польской культуры за границей путем международного обмена между польскими и зарубежными институциями, совместной организации культур
+ных мероприятий, поездок и резиденций, а также поддерживает польских художников в рамках международных проектов. Институт проводит мероприятия
+как оффлайн (выставки, спектакли, кинопоказы, концерты, фестивали), так и онлайн. Благодаря сотрудничеству с престижными иностранными партнерам
+и ИАМ удалось охватить аудиторию в 60 миллионов человек на 6 континентах в 70 странах, в частности, в Великобритании, Франции, России, Израиле,
+ Германии, Турции, США, Канаде, Австралии, Украине, Литве, Латвии, Эстонии, Венгрии, Чехии, Китае, Японии и Корее.')
+<Post: Post object (1)>
+>>> Post.objects.get(id=1).text
+'Институт Адама Мицкевича (ИАМ) занимается продвижением польской культуры за границей путем международного обмена между польскими и зарубежминституциями, совместной организации культурных мероприятий, поездок и резиденций, а также поддерживает польских художников в рамках междунаро
+и институциями, совместной организации культурных мероприятий, поездок и резиденций, а также поддерживает польских художников в рамках междуна
+родных проектов. Институт проводит мероприятия как оффлайн (выставки, спектакли, кинопоказы, концерты, фестивали), так и онлайн. Благодаря 
+'Институт Адама Мицкевича (ИАМ) занимается продвижением польской культуры за границей путем международного обмена между польскими и зарубежны
+ми институциями, совместной организации культурных мероприятий, поездок и резиденций, а также поддерживает польских художников в рамках между
+народных проектов. Институт проводит мероприятия как оффлайн (выставки, спектакли, кинопоказы, концерты, фестивали), так и онлайн. Благодар
+'Институт Адама Мицкевича (ИАМ) занимается продвижением польской культуры за границей путем международного обмена между польскими и заружотрудничеству с престижными иностранными партнерами ИАМ удалось охватить аудиторию в 60 миллионов человек на 6 континентах в 70 странах, в
+ными институциями, совместной организации культурных мероприятий, поездок и резиденций, а также поддерживает польских художников в рамках м
+еждународных проектов. Институт проводит мероприятия как оффлайн (выставки, спектакли, кинопоказы, концерты, фестивали), так и онлайн. Б
+'Институт Адама Мицкевича (ИАМ) занимается продвижением польской культуры за границей путем международного обмена между польскими и зарубежными институциями, совместной организации культу
+рных мероприятий, поездок и резиденций, а также поддерживает польских художников в рамках международных проектов. Институт проводит мероприятия как оффлайн (выставки, спектакли, кинопоказ
+ы, концерты, фестивали), так и онлайн. Благодаря сотрудничеству с престижными иностранными партнерами ИАМ удалось охватить аудиторию в 60 миллионов человек на 6 континентах в 70 странах,
+в частности, в Великобритании, Франции, России, Израиле, Германии, Турции, США, Канаде, Австралии, Украине, Литве, Латвии, Эстонии, Венгрии, Чехии, Китае, Японии и Корее.'
+>>> Post.objects.get(id=1).title
+'Институт Адама Мицкевича'
+>>> Post.objects.get(id=1).author
+<Author: Author object (1)>
+>>> Post.objects.get(id=1).text
+'Институт Адама Мицкевича (ИАМ) занимается продвижением польской культуры за границей путем международного обмена между польскими и зарубежными институциями, совместной организации культу
+рных мероприятий, поездок и резиденций, а также поддерживает польских художников в рамках международных проектов. Институт проводит мероприятия как оффлайн (выставки, спектакли, кинопоказ
+ы, концерты, фестивали), так и онлайн. Благодаря сотрудничеству с престижными иностранными партнерами ИАМ удалось охватить аудиторию в 60 миллионов человек на 6 континентах в 70 странах,
+в частности, в Великобритании, Франции, России, Израиле, Германии, Турции, США, Канаде, Австралии, Украине, Литве, Латвии, Эстонии, Венгрии, Чехии, Китае, Японии и Корее.'
+>>> Post.objects.create(author=author1, categoryType='AR', title='Институт Адама Мицкевича', text='Институт Адама Мицкевича (ИАМ) занимается пр
+  File "<console>", line 1
+    Post.objects.create(author=author1, categoryType='AR', title='Институт Адама Мицкевича', text='Институт Адама Мицкевича (ИАМ) занимается пр
+                                                                                                                                               ^
+SyntaxError: EOL while scanning string literal
+>>> одвижением польской культуры за границей путем международного обмена между польскими и зарубежными институциями, совместной организации культур
+  File "<console>", line 1
+    одвижением польской культуры за границей путем международного обмена между польскими и зарубежными институциями, совместной организации культур
+               ^
+SyntaxError: invalid syntax
+>>> ных мероприятий, поездок и резиденций, а также поддерживает польских художников в рамках международных проектов. Институт проводит мероприятия
+  File "<console>", line 1
+    ных мероприятий, поездок и резиденций, а также поддерживает польских художников в рамках международных проектов. Институт проводит мероприятия
+        ^
+SyntaxError: invalid syntax
+>>> как оффлайн (выставки, спектакли, кинопоказы, концерты, фестивали), так и онлайн. Благодаря сотрудничеству с престижными иностранными партнерам
+  File "<console>", line 1
+    как оффлайн (выставки, спектакли, кинопоказы, концерты, фестивали), так и онлайн. Благодаря сотрудничеству с престижными иностранными партнерам
+        ^
+SyntaxError: invalid syntax
+>>> и ИАМ удалось охватить аудиторию в 60 миллионов человек на 6 континентах в 70 странах, в частности, в Великобритании, Франции, России, Израиле,
+  File "<console>", line 1
+    и ИАМ удалось охватить аудиторию в 60 миллионов человек на 6 континентах в 70 странах, в частности, в Великобритании, Франции, России, Израиле,
+      ^
+SyntaxError: invalid syntax
+>>>  Германии, Турции, США, Канаде, Австралии, Украине, Литве, Латвии, Эстонии, Венгрии, Чехии, Китае, Японии и Корее.')
+  File "<console>", line 1
+    Германии, Турции, США, Канаде, Австралии, Украине, Литве, Латвии, Эстонии, Венгрии, Чехии, Китае, Японии и Корее.')
+IndentationError: unexpected indent
+>>> author2 = Author.objects.get(id=2)
+>>> author2
+<Author: Author object (2)>
+>>> Post.objects.create(author=author2, categoryType='AR', title='Министр спорта Польши призвал перенести стыковой матч с Россией', text='МОСКВА, 22 фев - РИА Новости. Стыковой матч к чем
+пионату мира - 2022 по футболу между сборными России и Польши следует перенести на нейтральную территорию из-за ситуации в ДНР и ЛНР, считает министр спорта Польши Камиль Бортничук.
+  File "<console>", line 1
+    Post.objects.create(author=author2, categoryType='AR', title='Министр спорта Польши призвал перенести стыковой матч с Россией', text='МОСКВА, 22 фев - РИА Новости. Стыковой матч к чем
+пионату мира - 2022 по футболу между сборными России и Польши следует перенести на нейтральную территорию из-за ситуации в ДНР и ЛНР, считает министр спорта Польши Камиль Бортничук.
+
+                                                                                                                                                                                     ^
+SyntaxError: EOL while scanning string literal
+>>> Ранее во вторник польская газета Sport сообщила, что с подобной просьбой в Союз европейских футбольных ассоциаций (УЕФА) намерен обратиться Польский футбольный союз (PZPN).
+  File "<console>", line 1
+    Ранее во вторник польская газета Sport сообщила, что с подобной просьбой в Союз европейских футбольных ассоциаций (УЕФА) намерен обратиться Польский футбольный союз (PZPN).
+          ^
+SyntaxError: invalid syntax
+>>> Post.objects.create(author=author2, categoryType='AR', title='Министр спорта Польши призвал перенести стыковой матч с Россией', text='МОСКВА, 22 фев - РИА Новости. Стыковой матч к чем
+
+  File "<console>", line 1
+    Post.objects.create(author=author2, categoryType='AR', title='Министр спорта Польши призвал перенести стыковой матч с Россией',
+text='МОСКВА, 22 фев - РИА Новости. Стыковой матч к чем
+
+                                                       ^
+SyntaxError: EOL while scanning string literal
+>>> пионату мира - 2022 по футболу между сборными России и Польши следует перенести на нейтральную территорию из-за ситуации в ДНР и ЛНР, считает министр спорта Польши Камиль Бортничук
+  File "<console>", line 1
+    пионату мира - 2022 по футболу между сборными России и Польши следует перенести на нейтральную территорию из-за ситуации в ДНР и ЛНР, считает министр спорта Польши Камиль Бортничук
+            ^
+SyntaxError: invalid syntax
+>>> Post.objects.create(author=author2, categoryType='AR', title='Министр спорта Польши призвал перенести стыковой матч с Россией',
+text='22 фев - РИА Новости. Стыковой матч к чемпионату мира - 2022 по футболу между сборными России и Польши следует перенести на не
+йтральную территорию из-за ситуации в ДНР и ЛНР, считает министр спорта Польши Камиль Бортничук')
+<Post: Post object (2)>
+>>>  Post.objects.get(id=2).title
+  File "<console>", line 1
+    Post.objects.get(id=2).title
+IndentationError: unexpected indent
+>>> Post.objects.get(id=1).title
+'Институт Адама Мицкевича'
+>>> Post.objects.get(id=2).title
+'Министр спорта Польши призвал перенести стыковой матч с Россией'
+>>> Post.objects.create(author=author2, categoryType='NW', title='Польша настаивает на отправке войск НАТО на Украину', text='Польша
+ намерена выслать 45 российских дипломатов по обвинению в шпионаже, сообщила утром 23 марта пресс-служба Агентства внутренней безопа
+сности (ABW) страны. Этих российских дипломатов назвали сотрудниками спецслужб или сообщниками, чья деятельность «угрожает интересам
+ и безопасности Польши».')
+<Post: Post object (3)>
+>>> Post.objects.get(id=3).category
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Post' object has no attribute 'category'
+>>> Post.objects.get(id=3).text
+'Польша намерена выслать 45 российских дипломатов по обвинению в шпионаже, сообщила утром 23 марта пресс-служба Агентства внутренней
+ безопасности (ABW) страны. Этих российских дипломатов назвали сотрудниками спецслужб или сообщниками, чья деятельность «угрожает ин
+тересам и безопасности Польши».'
+>>> Post.objects.get(id=1).postCategory.add(Category.objects.get(id=1))
+>>> Post.objects.get(id=1).postCategory.add(Category.objects.get(id=2))
+>>> Post.objects.get(id=1).category
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Post' object has no attribute 'category'
+>>> Post.objects.get(id=1).postCategory
+<django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager object at 0x000001FB1A8
+D7EE0>
+>>> Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=u1, text='good article')
+<Comment: Comment object (1)>
+>>> Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=u2, text='very good article')
+<Comment: Comment object (2)>
+>>> Comment.objects.create(commentPost=Post.objects.get(id=2), commentUser=u1, text='not so good article')
+<Comment: Comment object (3)>
+>>> Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=u1, text='very bad news')
+<Comment: Comment object (4)>
+>>> Comment.objects.get(id=1).like()
+>>> Comment.objects.get(id=1).rating
+1
+>>> Comment.objects.get(id=2).like()
+>>> Comment.objects.get(id=3).like()
+>>> Comment.objects.get(id=3).dislike()
+>>> Comment.objects.get(id=4).dislike()
+>>> Comment.objects.get(id=4).dislike()
+>>> Comment.objects.get(id=4).dislike()
+>>> Comment.objects.get(id=4).rating
+-3
+>>> Author.objects.get(id=1)
+<Author: Author object (1)>
+>>> Author.objects.get(id=1).ratingAuthor
+0
+>>> Author.objects.get(id=2).ratingAuthor
+0
+>>> Author.objects.get(id=1).update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = p_rat * 3 + comment_rat
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> Author.objects.get(id=1).update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = p_rat * 3 + int(comment_rat)
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a1 = Author.objects.get(id=1)
+>>> a1.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = p_rat * 3 + int(comment_rat)
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a1.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = pRat * 3 + comment_rat
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a1.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = pRat * 3 + cRat
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> Post.objects.get(id=1).like
+<bound method Post.like of <Post: Post object (1)>>
+>>> a1.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = prat * 3 + comRat
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a1.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = prat + comRat
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a1.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = 3 * prat + com_rat
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a1.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = 3 * int(prat) + int(com_rat)
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a1.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = 3 * int(prat) + int(com_rat)
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a1.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = 3 * int(prat) + int(com_rat)
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a1.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = 3 * prat + com_rat
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a1.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = 3 * prat + com_rat
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a = Author.objects.get(id=2)
+>>> a.update.rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Author' object has no attribute 'update'
+>>> a.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Slavik\Desktop\Python\project_news_4\project\newapp\models.py", line 19, in update_rating
+    self.ratingAuthor = 3 * prat + com_rat
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+>>> a.ratingAuthor
+0
+>>> a1.ratingAuthor
+0
+>>> abr = Author.objects.order_by('-ratingAuthor')[:1]
+>>> for i in abr:
+... i.ratingAuthor
+  File "<console>", line 2
+    i.ratingAuthor
+    ^
+IndentationError: expected an indented block
+>>> for i in abr:
+... i.rati.ratingAuthor
+  File "<console>", line 2
+    i.rati.ratingAuthor
+    ^
+IndentationError: expected an indented block
+>>> abr.ratingAuthor
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'ratingAuthor'
+>>> for i in abr:
+...     i.ratingAuthor
+...     i.authorUser.username
+...
+0
+'Artur'
+>>>
